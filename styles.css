@@ -103,7 +103,7 @@ p { margin: 0 0 1em; }
 .orbit .ring { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 3 6; }
 .orbit .core { fill: var(--accent); }
 .orbit text { font: 600 11px var(--sans); fill: var(--text); text-anchor: middle; }
-.orbit .core__label { fill: var(--accent-ink); font-size: 13px; letter-spacing: .08em; }
+.orbit .core__label { fill: var(--accent-ink); font-size: 13px; letter-spacing: .02em; }
 .orbit .node { fill: var(--ink-3); stroke: rgba(255,255,255,.22); }
 .orbit .node--accent { stroke: var(--accent); stroke-width: 2; }
 .spin { transform-origin: 200px 200px; }
