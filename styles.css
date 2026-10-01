@@ -200,3 +200,19 @@ p { margin: 0 0 1em; }
 .footer { border-top: 1px solid var(--line); padding-block: 2rem calc(2rem + env(safe-area-inset-bottom, 0px)); color: var(--muted); font-size: .9rem; }
 .footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
 .footer__small { font-size: .8rem; }
+
+/* Certification lists */
+.link { color: var(--accent); text-underline-offset: 3px; }
+.certlists { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 3rem; }
+.certlist { background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem 1.8rem; border-top: 3px solid var(--c); }
+.certlist--aws { --c: var(--aws); }
+.certlist--azure { --c: var(--azure); }
+.certlist ul { list-style: none; margin: 0; padding: 0; }
+.certlist li { display: grid; grid-template-columns: 7.5rem 1fr auto; gap: .8rem; align-items: baseline; padding: .55rem 0; border-bottom: 1px solid var(--line); font-size: .95rem; }
+.certlist li:last-child { border-bottom: 0; }
+.certlist .lvl { font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--c); }
+.certlist em { font-style: normal; font-size: .82rem; color: var(--muted); white-space: nowrap; }
+.certlist__also { margin-top: 1.6rem; font-size: 1rem; }
+.certlist p { color: var(--muted); font-size: .92rem; margin: 0; }
+@media (max-width: 860px) { .certlists { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .certlist li { grid-template-columns: 1fr auto; } .certlist .lvl { grid-column: 1 / -1; } }

@@ -1,5 +1,5 @@
 // Contact address used by the email link and the enquiry form. Change it here.
-const CONTACT_EMAIL = "hello@example.com.au";
+const CONTACT_EMAIL = "cloudadvisorygroup@gmail.com";
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
