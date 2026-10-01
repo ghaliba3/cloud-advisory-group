@@ -216,3 +216,4 @@ p { margin: 0 0 1em; }
 .certlist p { color: var(--muted); font-size: .92rem; margin: 0; }
 @media (max-width: 860px) { .certlists { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .certlist li { grid-template-columns: 1fr auto; } .certlist .lvl { grid-column: 1 / -1; } }
+.orbit .node__label--small { font-size: 9.5px; }
