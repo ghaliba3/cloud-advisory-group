@@ -2,7 +2,7 @@
 const CONTACT_EMAIL = "cloudadvisorygroup@gmail.com";
 // Optional. Paste a Formspree endpoint (https://formspree.io/f/xxxx) to send enquiries
 // straight from the page. Leave empty to open the visitor's email app instead.
-const FORM_ENDPOINT = "";
+const FORM_ENDPOINT = "https://formspree.io/f/xyezrzyw";
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
