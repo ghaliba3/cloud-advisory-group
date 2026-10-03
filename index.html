@@ -221,19 +221,38 @@
           <p>A short first conversation costs nothing. We'll tell you honestly whether we can help, and if we can't, who might.</p>
           <p class="contact__email">Email <a data-email href="#"></a></p>
         </div>
-        <form class="form" id="contact-form" novalidate>
-          <label>Name<input name="name" autocomplete="name" required></label>
-          <label>Organisation<input name="org" autocomplete="organization"></label>
-          <label>Email<input name="email" type="email" autocomplete="email" required></label>
-          <label>Area of interest
-            <select name="topic">
-              <option>AWS</option><option>Azure</option><option>Google Cloud</option><option>Salesforce</option><option>APIs and integration</option><option>AI &amp; ML advisory</option><option>Not sure yet</option>
-            </select>
-          </label>
-          <label class="form__full">How can we help?<textarea name="message" rows="4" required></textarea></label>
-          <button class="btn form__full" type="submit">Send enquiry</button>
-          <p class="form__note form__full" role="status" aria-live="polite"></p>
-        </form>
+        <div class="contact__forms">
+          <form class="form" id="contact-form" novalidate>
+            <label>Name<input name="name" autocomplete="name" required></label>
+            <label>Organisation<input name="org" autocomplete="organization"></label>
+            <label>Email<input name="email" type="email" autocomplete="email" required></label>
+            <label>Area of interest
+              <select name="topic">
+                <option>AWS</option><option>Azure</option><option>Google Cloud</option><option>Salesforce</option><option>APIs and integration</option><option>AI &amp; ML advisory</option><option>Not sure yet</option>
+              </select>
+            </label>
+            <label class="form__full">How can we help?<textarea name="message" rows="4" required></textarea></label>
+            <button class="btn form__full" type="submit">Send enquiry</button>
+            <p class="form__note form__full" role="status" aria-live="polite"></p>
+          </form>
+          <form class="form" id="meet-form" novalidate>
+            <h3 class="form__full form__title">Book a Google Meet</h3>
+            <label>Name<input name="name" autocomplete="name" required></label>
+            <label>Your email<input name="email" type="email" autocomplete="email" required></label>
+            <label>Date<input name="date" type="date" required></label>
+            <label>Start time<input name="time" type="time" required></label>
+            <label>Length
+              <select name="length"><option value="30">30 minutes</option><option value="60">60 minutes</option></select>
+            </label>
+            <label>Area of interest
+              <select name="topic">
+                <option>AWS</option><option>Azure</option><option>Google Cloud</option><option>Salesforce</option><option>APIs and integration</option><option>AI &amp; ML advisory</option><option>Not sure yet</option>
+              </select>
+            </label>
+            <button class="btn form__full" type="submit">Request a Google Meet</button>
+            <p class="form__note form__full" role="status" aria-live="polite"></p>
+          </form>
+        </div>
       </div>
     </section>
   </main>
