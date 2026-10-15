@@ -72,6 +72,17 @@ p { margin: 0 0 1em; }
 .nav__links a:not(.btn):hover { color: var(--text); }
 .nav__toggle { display: none; background: none; border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: .4em .8em; font: inherit; }
 
+.nav__drop { position: relative; display: flex; align-items: center; gap: .2rem; padding-block: 1.3rem; }
+.nav__drop-toggle { background: none; border: 0; color: var(--muted); font: inherit; font-size: 1rem; line-height: 1; cursor: pointer; padding: .3em .4em; border-radius: 6px; }
+.nav__drop-toggle:hover { color: var(--text); }
+.nav__menu { display: none; position: absolute; top: 100%; right: 0; z-index: 20; margin: 0; padding: .5rem; list-style: none; min-width: 360px; max-height: 70vh; overflow: auto; background: var(--ink-2); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 12px 32px rgba(0,0,0,.35); }
+.nav__menu a { display: block; padding: .55rem .7rem; border-radius: 8px; line-height: 1.35; }
+.nav__menu a:hover { background: rgba(255,255,255,.06); }
+.nav__menu-all { border-top: 1px solid var(--line); margin-top: .4rem; padding-top: .4rem; }
+.nav__menu-all a { color: var(--accent) !important; font-weight: 600; }
+.nav__drop.is-open .nav__menu { display: block; }
+@media (hover: hover) and (min-width: 761px) { .nav__drop:not(.is-dismissed):hover .nav__menu, .nav__drop:not(.is-dismissed):focus-within .nav__menu { display: block; } }
+
 @media (max-width: 760px) {
   .nav__toggle { display: block; }
   .nav__links {
@@ -83,6 +94,9 @@ p { margin: 0 0 1em; }
   .nav__links.is-open { display: flex; }
   .nav__links a { padding: .8rem 0; }
   .nav__links .btn { margin-top: .5rem; }
+  .nav__drop { flex-wrap: wrap; padding-block: 0; justify-content: space-between; }
+  .nav__drop > a { flex: 1; }
+  .nav__menu { position: static; width: 100%; min-width: 0; max-height: 50vh; box-shadow: none; background: transparent; border: 0; border-left: 1px solid var(--line); border-radius: 0; margin-left: .4rem; }
 }
 
 /* Hero */

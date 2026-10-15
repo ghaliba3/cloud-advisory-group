@@ -25,6 +25,20 @@ links.addEventListener("click", (e) => {
   }
 });
 
+// Training dropdown
+const drop = document.querySelector(".nav__drop");
+const dropToggle = drop.querySelector(".nav__drop-toggle");
+const setDrop = (open) => {
+  drop.classList.toggle("is-open", open);
+  dropToggle.setAttribute("aria-expanded", String(open));
+};
+dropToggle.addEventListener("click", () => setDrop(!drop.classList.contains("is-open")));
+document.addEventListener("click", (e) => { if (!drop.contains(e.target)) setDrop(false); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") { setDrop(false); drop.classList.add("is-dismissed"); } });
+drop.addEventListener("mouseleave", () => drop.classList.remove("is-dismissed"));
+drop.addEventListener("focusout", () => drop.classList.remove("is-dismissed"));
+drop.addEventListener("click", (e) => { if (e.target.closest(".nav__menu a")) setDrop(false); });
+
 // GitHub Pages has no server. With FORM_ENDPOINT set the enquiry is posted to it,
 // otherwise the form opens a pre-filled email.
 const form = document.getElementById("contact-form");
