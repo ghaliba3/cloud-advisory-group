@@ -78,6 +78,7 @@ p { margin: 0 0 1em; }
 .nav__menu { display: none; position: absolute; top: 100%; right: 0; z-index: 20; margin: 0; padding: .5rem; list-style: none; min-width: 360px; max-height: 70vh; overflow: auto; background: var(--ink-2); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 12px 32px rgba(0,0,0,.35); }
 .nav__menu a { display: block; padding: .55rem .7rem; border-radius: 8px; line-height: 1.35; }
 .nav__menu a:hover { background: rgba(255,255,255,.06); }
+.badge-new { display: inline-flex; align-items: center; gap: .25em; margin-left: .4em; padding: .1em .55em; border-radius: 99px; background: var(--accent); color: var(--ink); font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; vertical-align: middle; white-space: nowrap; }
 .nav__menu-all { border-top: 1px solid var(--line); margin-top: .4rem; padding-top: .4rem; }
 .nav__menu-all a { color: var(--accent) !important; font-weight: 600; }
 .nav__drop.is-open .nav__menu { display: block; }
