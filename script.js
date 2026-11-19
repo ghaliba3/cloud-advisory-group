@@ -42,8 +42,8 @@ drop.addEventListener("click", (e) => { if (e.target.closest(".nav__menu a")) se
 // GitHub Pages has no server. With FORM_ENDPOINT set the enquiry is posted to it,
 // otherwise the form opens a pre-filled email.
 const form = document.getElementById("contact-form");
-const note = form.querySelector(".form__note");
-form.addEventListener("submit", async (e) => {
+const note = form?.querySelector(".form__note");
+form?.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!form.checkValidity()) {
     note.textContent = "Please add your name, email and a short message.";
@@ -82,11 +82,11 @@ form.addEventListener("submit", async (e) => {
 
 // Meet request: opens Google Calendar with the event filled in and the firm invited.
 const meet = document.getElementById("meet-form");
-const meetNote = meet.querySelector(".form__note");
+const meetNote = meet?.querySelector(".form__note");
 const stamp = (dt) => dt.getFullYear() + String(dt.getMonth() + 1).padStart(2, "0") + String(dt.getDate()).padStart(2, "0")
   + "T" + String(dt.getHours()).padStart(2, "0") + String(dt.getMinutes()).padStart(2, "0") + "00";
-meet.date.min = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-meet.addEventListener("submit", (e) => {
+if (meet) meet.date.min = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+meet?.addEventListener("submit", (e) => {
   e.preventDefault();
   if (!meet.checkValidity()) {
     meetNote.textContent = "Please add your name, email, date and start time.";
