@@ -244,3 +244,8 @@ p { margin: 0 0 1em; }
 .announce a { color: var(--accent); font-weight: 600; text-decoration: none; }
 .announce a:hover { text-decoration: underline; }
 .nav__links a[aria-current="page"] { color: var(--accent); }
+
+/* Products */
+.cards--products { grid-template-columns: minmax(0, 1fr); max-width: 760px; }
+.card__link { margin: 1.2rem 0 0; }
+.card__link .btn { text-decoration: none; }
