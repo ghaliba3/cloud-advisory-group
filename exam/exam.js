@@ -5,9 +5,65 @@
   const PASS_MARK = 0.68;
   let data, test, idx, answers, checked, practice, reviewing = false;
 
+  const CLIENT_ID = document.querySelector('meta[name="google-client-id"]').content;
+
+  // ---- Google sign-in -------------------------------------------------------
+  // The page shows nothing until a Google ID token for this client is held.
+  // The token is kept for the browser tab only (sessionStorage).
+  const claims = (jwt) => {
+    try {
+      const b = jwt.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
+      return JSON.parse(decodeURIComponent(escape(atob(b))));
+    } catch {
+      return null;
+    }
+  };
+  const validToken = (jwt) => {
+    const c = jwt && claims(jwt);
+    return !!c && c.aud === CLIENT_ID && /accounts\.google\.com$/.test(c.iss) && c.exp * 1000 > Date.now() && c.email_verified;
+  };
+
+  function signedIn(jwt) {
+    sessionStorage.setItem("exam-id-token", jwt);
+    $("exam-signin").hidden = true;
+    $("exam-user").hidden = false;
+    $("user-email").textContent = claims(jwt).email;
+    loadTests();
+  }
+
+  function showSignIn(message) {
+    sessionStorage.removeItem("exam-id-token");
+    ["exam-user", "exam-start", "exam-run", "exam-result"].forEach((v) => ($(v).hidden = true));
+    $("exam-signin").hidden = false;
+    $("signin-error").hidden = !message;
+    $("signin-error").textContent = message || "";
+    const render = () => {
+      google.accounts.id.initialize({
+        client_id: CLIENT_ID,
+        callback: (r) => (validToken(r.credential) ? signedIn(r.credential) : showSignIn("That sign-in could not be used. Try again.")),
+      });
+      google.accounts.id.renderButton($("google-button"), { theme: "filled_black", size: "large", shape: "pill", text: "signin_with" });
+    };
+    if (window.google?.accounts?.id) render();
+    else window.addEventListener("load", () => (window.google?.accounts?.id ? render() : ($("signin-error").hidden = false, $("signin-error").textContent = "Google sign-in could not load. Check your connection or ad blocker, then refresh.")));
+  }
+
+  $("btn-signout").addEventListener("click", (e) => {
+    e.preventDefault();
+    sessionStorage.removeItem("exam-state");
+    window.google?.accounts?.id?.disableAutoSelect();
+    showSignIn();
+  });
+
+  const token = sessionStorage.getItem("exam-id-token");
+  if (validToken(token)) signedIn(token);
+  else showSignIn();
+
   const save = () => sessionStorage.setItem("exam-state", JSON.stringify({ test: test.n, idx, answers, checked, practice }));
   const show = (view) => ["exam-start", "exam-run", "exam-result"].forEach((v) => ($(v).hidden = v !== view));
 
+  function loadTests() {
+  if (data) return;
   fetch("tests.json")
     .then((r) => r.json())
     .then((d) => {
@@ -25,6 +81,8 @@
     .catch(() => {
       $("test-list").innerHTML = "<p>The questions could not be loaded. Refresh the page to try again.</p>";
     });
+  $("exam-start").hidden = false;
+  }
 
   function start(n) {
     test = { n, qs: data.tests[n] };

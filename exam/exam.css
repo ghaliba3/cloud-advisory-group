@@ -36,3 +36,8 @@
 .exam__quit { margin-top: 1rem; font-size: .9rem; }
 .exam__quit a { color: var(--muted); }
 .exam__score { font-family: var(--serif); font-size: 3rem; margin: .2rem 0 .6rem; }
+.exam__signin { background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem; max-width: 520px; }
+.exam__signin p { color: var(--muted); }
+.exam__error { color: #ff9a9a !important; margin-top: 1rem; }
+.exam__user { color: var(--muted); font-size: .92rem; margin-bottom: 1.2rem; }
+.exam__user a { color: var(--accent); }
