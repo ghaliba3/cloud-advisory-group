@@ -15,6 +15,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="exam.css">
+  <meta name="robots" content="noindex">
+  <meta name="google-client-id" content="574921121910-j8j6ja9dapm9o0tfi60sfnh9akdqqgmu.apps.googleusercontent.com">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -71,7 +74,18 @@
           <p>Six practice tests of 50 exam-level questions each. Every code answer was verified by compiling and running it on Java 25, and every option comes with an explanation.</p>
         </header>
 
-        <div id="exam-start" class="exam__start">
+        <div id="exam-signin" class="exam__signin">
+          <h2 class="exam__h2">Sign in to start</h2>
+          <p>Sign in with your Google account to use the practice exam.</p>
+          <div id="google-button"></div>
+          <p class="exam__error" id="signin-error" hidden></p>
+        </div>
+
+        <div id="exam-user" class="exam__user" hidden>
+          Signed in as <strong id="user-email"></strong> · <a href="./" id="btn-signout">Sign out</a>
+        </div>
+
+        <div id="exam-start" class="exam__start" hidden>
           <h2 class="exam__h2">Choose a test</h2>
           <div class="exam__tests" id="test-list"></div>
           <label class="exam__mode"><input type="checkbox" id="practice-mode" checked> Show the answer after each question</label>
